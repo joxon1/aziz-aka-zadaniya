@@ -1,7 +1,7 @@
 import React, { FC, useRef, useState } from "react";
 import styled from "styled-components";
 import { ITodo } from "../types/types";
-import TodoItem from "./TodoItem";
+import { TodoItem } from "./TodoItem";
 
 const Form = styled.input`
   width: 80%;

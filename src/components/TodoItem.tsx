@@ -25,13 +25,23 @@ const RedText = styled.h3`
   font-size: 1rem;
   background: red;
 `;
+const TextUndefined = styled.p`
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  width: 80%;
+  text-align: center;
+`;
 interface TodoItemProps {
   todos: ITodo[];
   onToggle?(id: number): void;
   onRemove?: (id: number) => void;
 }
 
-const TodoItem: FC<TodoItemProps> = ({ todos, onRemove, onToggle }) => {
+export const TodoItem: FC<TodoItemProps> = ({ todos, onRemove, onToggle }) => {
+  if (todos.length === 0) {
+    return <TextUndefined>Данные пока нет !</TextUndefined>;
+  }
+
   return (
     <ul>
       {todos.map((todo) => {
@@ -52,5 +62,3 @@ const TodoItem: FC<TodoItemProps> = ({ todos, onRemove, onToggle }) => {
     </ul>
   );
 };
-
-export default TodoItem;

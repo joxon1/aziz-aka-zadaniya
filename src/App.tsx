@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 // import NumberList from "./components/NumberList";
 import TodoList from "./components/TodoList";
 // import FormList from "./components/FormList";
-import TodoItem from "./components/TodoItem";
+import { TodoItem } from "./components/TodoItem";
 import { ITodo } from "./types/types";
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ const App: FC = () => {
     const newTodo = {
       title,
       id: Date.now(),
-      complated: false,
+      complated: false
     };
     setTodos((prev) => [newTodo, ...prev]);
   };
@@ -33,8 +33,12 @@ const App: FC = () => {
       })
     );
   };
+
   const removeHandler = (id: number) => {
-    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+    const alertMessage = window.confirm("Вы точно хотите удалить элемент?");
+    if (alertMessage) {
+      setTodos((prev) => prev.filter((prev) => prev.id !== id));
+    }
   };
 
   return (
